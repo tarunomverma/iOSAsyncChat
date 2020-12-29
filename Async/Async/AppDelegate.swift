@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = MainViewController() // Your initial view controller.
+        
+        let signInVC = SignInViewController()
+        signInVC.tabBarItem = UITabBarItem(title: "SignIn", image: UIImage(named: "signInIcon"), tag: 0)
+        
+        let registerVC = RegisterViewController()
+        registerVC.tabBarItem = UITabBarItem(title: "Register", image: UIImage(named: "registerIcon"), tag: 1)
+        
+        let chatVC = ChatViewController()
+        chatVC.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "chatIcon"), tag: 2)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [signInVC, registerVC, chatVC]
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
         return true
