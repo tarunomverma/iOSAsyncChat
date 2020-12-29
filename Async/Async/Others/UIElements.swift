@@ -13,13 +13,27 @@ class Label :UILabel {
         super.init(frame: .zero)
         attributedText = NSAttributedString(string: text)
         layer.cornerRadius = 5
-        font = UIFont.boldSystemFont(ofSize: 24)
+        setup()
         height(40)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setup() {
+        font = UIFont.boldSystemFont(ofSize: 24)
+    }
+}
+
+//==========================================================================================================================
+
+class LightLabel :Label {
+    
+    override func setup() {
+        font = UIFont.systemFont(ofSize: 24)
+    }
+    
 }
 
 //==========================================================================================================================

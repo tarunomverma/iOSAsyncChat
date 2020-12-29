@@ -19,3 +19,18 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+class SessionManager {
+    
+    static let shared = SessionManager()
+    
+    var isLoggedIn :Bool?
+    
+    init() {
+        isLoggedIn = false
+    }
+    
+    func hasSession() -> Bool {
+        return isLoggedIn ?? false
+    }
+}
