@@ -16,6 +16,12 @@
 		E9A2AFA8259B52BA00F18432 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFA7259B52BA00F18432 /* ChatView.swift */; };
 		E9A2AFAF259B5DF800F18432 /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFAE259B5DF800F18432 /* UIElements.swift */; };
 		E9A2AFB4259B62A200F18432 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFB3259B62A200F18432 /* Extensions.swift */; };
+		E9A9767B259C89A50098DFA1 /* asyncResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E9A9767A259C89A50098DFA1 /* asyncResponse.json */; };
+		E9A97683259C92190098DFA1 /* StartChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A97682259C92190098DFA1 /* StartChatViewController.swift */; };
+		E9A97688259C92370098DFA1 /* StartChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A97687259C92370098DFA1 /* StartChatView.swift */; };
+		E9A9768D259CA2810098DFA1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9768C259CA2810098DFA1 /* Helpers.swift */; };
+		E9A9769B259CC27E0098DFA1 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9769A259CC27E0098DFA1 /* TextInputView.swift */; };
+		E9A976A3259CC3780098DFA1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A976A2259CC3780098DFA1 /* Models.swift */; };
 		E9AF573B2594B07C0028DF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF573A2594B07C0028DF8A /* AppDelegate.swift */; };
 		E9AF573F2594B07C0028DF8A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF573E2594B07C0028DF8A /* SignInViewController.swift */; };
 		E9AF57442594B0830028DF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AF57432594B0830028DF8A /* Assets.xcassets */; };
@@ -57,6 +63,12 @@
 		E9A2AFA7259B52BA00F18432 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		E9A2AFAE259B5DF800F18432 /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
 		E9A2AFB3259B62A200F18432 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E9A9767A259C89A50098DFA1 /* asyncResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = asyncResponse.json; sourceTree = "<group>"; };
+		E9A97682259C92190098DFA1 /* StartChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatViewController.swift; sourceTree = "<group>"; };
+		E9A97687259C92370098DFA1 /* StartChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatView.swift; sourceTree = "<group>"; };
+		E9A9768C259CA2810098DFA1 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		E9A9769A259CC27E0098DFA1 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		E9A976A2259CC3780098DFA1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E9AF57372594B07C0028DF8A /* Async.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Async.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AF573A2594B07C0028DF8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AF573E2594B07C0028DF8A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -127,10 +139,23 @@
 		E9A2AFAD259B5DBF00F18432 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				E9A9767A259C89A50098DFA1 /* asyncResponse.json */,
 				E9A2AFAE259B5DF800F18432 /* UIElements.swift */,
 				E9A2AFB3259B62A200F18432 /* Extensions.swift */,
+				E9A9768C259CA2810098DFA1 /* Helpers.swift */,
+				E9A976A2259CC3780098DFA1 /* Models.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		E9A97699259CC26B0098DFA1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E9A2AFA7259B52BA00F18432 /* ChatView.swift */,
+				E9A2AFA2259B52A200F18432 /* ChatViewController.swift */,
+				E9A9769A259CC27E0098DFA1 /* TextInputView.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		E9AF572E2594B07C0028DF8A = {
@@ -189,12 +214,13 @@
 		E9AF57792594C6340028DF8A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E9A97699259CC26B0098DFA1 /* Chat */,
 				E9AF573E2594B07C0028DF8A /* SignInViewController.swift */,
 				E9AF577A2594C6500028DF8A /* SignInView.swift */,
 				E9A2AF98259B4B7800F18432 /* RegisterViewController.swift */,
 				E9A2AF9D259B4BA200F18432 /* RegisterView.swift */,
-				E9A2AFA2259B52A200F18432 /* ChatViewController.swift */,
-				E9A2AFA7259B52BA00F18432 /* ChatView.swift */,
+				E9A97682259C92190098DFA1 /* StartChatViewController.swift */,
+				E9A97687259C92370098DFA1 /* StartChatView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -207,6 +233,7 @@
 			buildConfigurationList = E9AF57612594B0840028DF8A /* Build configuration list for PBXNativeTarget "Async" */;
 			buildPhases = (
 				9B75118D3CE76A47CDE1CE00 /* [CP] Check Pods Manifest.lock */,
+				0598914AECAA4EE5BF22F519 /* [CP] Prepare Artifacts */,
 				E9AF57332594B07C0028DF8A /* Sources */,
 				E9AF57342594B07C0028DF8A /* Frameworks */,
 				E9AF57352594B07C0028DF8A /* Resources */,
@@ -245,6 +272,7 @@
 			buildConfigurationList = E9AF57672594B0840028DF8A /* Build configuration list for PBXNativeTarget "AsyncUITests" */;
 			buildPhases = (
 				4907EAD2D56E83D021FE20C1 /* [CP] Check Pods Manifest.lock */,
+				A1BFDC9D7A97FAC353D4C14B /* [CP] Prepare Artifacts */,
 				E9AF57542594B0840028DF8A /* Sources */,
 				E9AF57552594B0840028DF8A /* Frameworks */,
 				E9AF57562594B0840028DF8A /* Resources */,
@@ -307,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A9767B259C89A50098DFA1 /* asyncResponse.json in Resources */,
 				E9AF57472594B0830028DF8A /* LaunchScreen.storyboard in Resources */,
 				E9AF57442594B0830028DF8A /* Assets.xcassets in Resources */,
 			);
@@ -329,6 +358,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0598914AECAA4EE5BF22F519 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Async/Pods-Async-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Async/Pods-Async-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Async/Pods-Async-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		11995D6DEB8D02F345999820 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,6 +458,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A1BFDC9D7A97FAC353D4C14B /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Async-AsyncUITests/Pods-Async-AsyncUITests-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Async-AsyncUITests/Pods-Async-AsyncUITests-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Async-AsyncUITests/Pods-Async-AsyncUITests-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F584E9AB1E1C8254821EB633 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -438,13 +501,18 @@
 			files = (
 				E9AF573F2594B07C0028DF8A /* SignInViewController.swift in Sources */,
 				E9A2AFB4259B62A200F18432 /* Extensions.swift in Sources */,
+				E9A97688259C92370098DFA1 /* StartChatView.swift in Sources */,
 				E9A2AF9E259B4BA200F18432 /* RegisterView.swift in Sources */,
 				E9AF577B2594C6500028DF8A /* SignInView.swift in Sources */,
 				E9AF573B2594B07C0028DF8A /* AppDelegate.swift in Sources */,
+				E9A97683259C92190098DFA1 /* StartChatViewController.swift in Sources */,
+				E9A9768D259CA2810098DFA1 /* Helpers.swift in Sources */,
 				E9A2AFA8259B52BA00F18432 /* ChatView.swift in Sources */,
+				E9A9769B259CC27E0098DFA1 /* TextInputView.swift in Sources */,
 				E9A2AFA3259B52A200F18432 /* ChatViewController.swift in Sources */,
 				E9A2AFAF259B5DF800F18432 /* UIElements.swift in Sources */,
 				E9A2AF99259B4B7800F18432 /* RegisterViewController.swift in Sources */,
+				E9A976A3259CC3780098DFA1 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

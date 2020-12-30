@@ -22,11 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let registerVC = RegisterViewController()
         registerVC.tabBarItem = UITabBarItem(title: "Register", image: UIImage(named: "registerIcon"), tag: 1)
         
-        let chatVC = ChatViewController()
+        let chatVC = StartChatViewController()
         chatVC.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "chatIcon"), tag: 2)
+        let chatNav = UINavigationController(rootViewController: chatVC)
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [signInVC, registerVC, chatVC]
+        tabBarController.viewControllers = [signInVC, registerVC, chatNav]
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window

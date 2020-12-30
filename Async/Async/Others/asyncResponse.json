@@ -1,0 +1,74 @@
+{
+    "messages": [
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message",
+            "time":"02:02"
+        },
+        {
+            "sender":"lgc",
+            "message":"Hello, this is received message and this is a long message for testing",
+            "time":"02:00"
+        },
+        {
+            "sender":"me",
+            "message":"Hello, this is sent message and this is a long message, it should go multiline",
+            "time":"02:02"
+        }
+    ]
+}

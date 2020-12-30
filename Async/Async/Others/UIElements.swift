@@ -9,12 +9,10 @@ import UIKit
 
 class Label :UILabel {
     
-    init(_ text :String) {
+    init(_ text :String = "") {
         super.init(frame: .zero)
         attributedText = NSAttributedString(string: text)
-        layer.cornerRadius = 5
         setup()
-        height(40)
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +24,7 @@ class Label :UILabel {
     }
 }
 
-//==========================================================================================================================
+//=================================================================================================
 
 class LightLabel :Label {
     
@@ -36,11 +34,39 @@ class LightLabel :Label {
     
 }
 
-//==========================================================================================================================
+//=================================================================================================
+
+class MediumLightLabel :Label {
+    
+    override func setup() {
+        font = UIFont.systemFont(ofSize: 14)
+    }
+    
+    func setText(_ text :String = "NA") {
+        attributedText = NSAttributedString(string: text)
+    }
+    
+}
+
+//=================================================================================================
+
+class SmallLightLabel :Label {
+    
+    override func setup() {
+        font = UIFont.systemFont(ofSize: 10)
+    }
+    
+    func setText(_ text :String = "NA") {
+        attributedText = NSAttributedString(string: text)
+    }
+    
+}
+
+//=================================================================================================
 
 class TextField :UITextField {
 
-    let insets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    let insets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 5)
     
     init(_ placeholder :String) {
         super.init(frame: .zero)
@@ -70,7 +96,7 @@ class TextField :UITextField {
     
 }
 
-//==========================================================================================================================
+//=================================================================================================
 
 class Button :UIButton {
     

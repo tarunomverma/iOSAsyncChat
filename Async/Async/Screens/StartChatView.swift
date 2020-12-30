@@ -1,15 +1,21 @@
 //
-//  ChatView.swift
+//  StartChatView.swift
 //  Async
 //
-//  Created by Tarun Verma on 29/12/2020.
+//  Created by Tarun Verma on 30/12/2020.
 //
 
 import UIKit
 
+protocol EmptyViewDelegate :class {
+    func ctaTapped()
+}
+
 class EmptyView :UIView {
     
     let label = LightLabel("Please sign in first to start chat.")
+    let cta = Button("Start chat")
+    weak var delegate :EmptyViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -22,14 +28,25 @@ class EmptyView :UIView {
     
     func setup() {
         addSubview(label)
+        addSubview(cta)
+        
         label.textAlignment = .center
         label.centerYToSuperview()
         label.leftToSuperview()
         label.rightToSuperview()
+        
+        cta.topToBottom(of: label, offset: 30)
+        cta.leftToSuperview(offset: 24)
+        cta.rightToSuperview(offset: -24)
+        cta.addTarget(self, action: #selector(ctaTapped), for: .touchUpInside)
+    }
+    
+    @objc func ctaTapped() {
+        delegate?.ctaTapped()
     }
 }
 
-class ChatView :UIView {
+class StartChatView :UIView {
     
     let emptyView = EmptyView()
     
@@ -47,6 +64,7 @@ class ChatView :UIView {
     }
     
     func setupEmptyView() {
+        
         addSubview(emptyView)
         emptyView.edgesToSuperview()
     }
