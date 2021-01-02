@@ -6,6 +6,8 @@ target 'Async' do
   use_frameworks!
   pod 'TinyConstraints'
   pod 'Reveal-SDK'
+  pod 'AWSMobileClient'
+  pod 'AWSPinpoint'
 
   # Pods for Async
 

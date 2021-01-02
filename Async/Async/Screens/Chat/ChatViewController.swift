@@ -12,11 +12,16 @@ class ChatViewController :UIViewController {
     let chatView = ChatView()
     var response :AsyncResponse?
     
+    convenience init(response :AsyncResponse) {
+        self.init()
+        self.response = response
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(chatView)
-        self.response = MockHelper().getResponse()
+//        self.response = MockHelper().getResponse()
         chatView.configure(response: response)
         hideKeyboardOnTap()
         chatView.edgesToSuperview()

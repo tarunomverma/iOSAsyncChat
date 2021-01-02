@@ -22,6 +22,7 @@
 		E9A9768D259CA2810098DFA1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9768C259CA2810098DFA1 /* Helpers.swift */; };
 		E9A9769B259CC27E0098DFA1 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9769A259CC27E0098DFA1 /* TextInputView.swift */; };
 		E9A976A3259CC3780098DFA1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A976A2259CC3780098DFA1 /* Models.swift */; };
+		E9AAE89F259DD720009877C2 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAE89E259DD720009877C2 /* ApiClient.swift */; };
 		E9AF573B2594B07C0028DF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF573A2594B07C0028DF8A /* AppDelegate.swift */; };
 		E9AF573F2594B07C0028DF8A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF573E2594B07C0028DF8A /* SignInViewController.swift */; };
 		E9AF57442594B0830028DF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AF57432594B0830028DF8A /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		E9A9768C259CA2810098DFA1 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E9A9769A259CC27E0098DFA1 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		E9A976A2259CC3780098DFA1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E9AAE89E259DD720009877C2 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		E9AF57372594B07C0028DF8A /* Async.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Async.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AF573A2594B07C0028DF8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AF573E2594B07C0028DF8A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				E9A2AFB3259B62A200F18432 /* Extensions.swift */,
 				E9A9768C259CA2810098DFA1 /* Helpers.swift */,
 				E9A976A2259CC3780098DFA1 /* Models.swift */,
+				E9AAE89E259DD720009877C2 /* ApiClient.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				E9A2AFAF259B5DF800F18432 /* UIElements.swift in Sources */,
 				E9A2AF99259B4B7800F18432 /* RegisterViewController.swift in Sources */,
 				E9A976A3259CC3780098DFA1 /* Models.swift in Sources */,
+				E9AAE89F259DD720009877C2 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct ConversationsResponse :Codable {
+    let id :String?
+    let last :Int?
+    let participants :[String]?
+}
+
 struct AsyncResponse :Codable {
     let messages :[Message]?
 }
