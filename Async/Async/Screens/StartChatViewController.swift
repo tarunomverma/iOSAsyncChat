@@ -16,8 +16,19 @@ class StartChatViewController :UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(startChatView)
-        startChatView.emptyView.delegate = self
-        startChatView.edgesToSuperview()
+        startChatView.chatListView.delegate = self
+        setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startChatView.configure(SessionManager.shared.hasSession())
+    }
+    
+    func setupConstraints() {
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 0
+        startChatView.edgesToSuperview(excluding: .bottom)
+        startChatView.bottomToSuperview(offset: -tabBarHeight)
     }
     
     func getConversations() {
@@ -41,9 +52,9 @@ class StartChatViewController :UIViewController {
     }
 }
 
-extension StartChatViewController :EmptyViewDelegate {
+extension StartChatViewController :ChatListViewDelegate {
     
-    func ctaTapped() {
+    func newChatButtonTapped() {
         getConversations()
     }
 }

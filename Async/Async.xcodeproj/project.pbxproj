@@ -10,6 +10,9 @@
 		4C1E5F0136A6B950D81BB567 /* Pods_Async_AsyncUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA4760F15B32821F4F45727 /* Pods_Async_AsyncUITests.framework */; };
 		8164CB2E11420B027BCB83C9 /* Pods_Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181F421BE2BCB96DECD9EFB9 /* Pods_Async.framework */; };
 		8281EB0C90FFDE01123EDB32 /* Pods_AsyncTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388497347405733FE8CBAC21 /* Pods_AsyncTests.framework */; };
+		E99B2EDE25A23D19002D789A /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = E99B2EDC25A23D19002D789A /* awsconfiguration.json */; };
+		E99B2EDF25A23D19002D789A /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = E99B2EDD25A23D19002D789A /* amplifyconfiguration.json */; };
+		E99B2EF525A24CE4002D789A /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B2EF425A24CE4002D789A /* Managers.swift */; };
 		E9A2AF99259B4B7800F18432 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AF98259B4B7800F18432 /* RegisterViewController.swift */; };
 		E9A2AF9E259B4BA200F18432 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AF9D259B4BA200F18432 /* RegisterView.swift */; };
 		E9A2AFA3259B52A200F18432 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFA2259B52A200F18432 /* ChatViewController.swift */; };
@@ -58,6 +61,9 @@
 		932664D967973696BCE878E1 /* Pods-Async-AsyncUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Async-AsyncUITests.debug.xcconfig"; path = "Target Support Files/Pods-Async-AsyncUITests/Pods-Async-AsyncUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A3D48065AA301DAE1FAA608 /* Pods-Async-AsyncUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Async-AsyncUITests.release.xcconfig"; path = "Target Support Files/Pods-Async-AsyncUITests/Pods-Async-AsyncUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9AA4760F15B32821F4F45727 /* Pods_Async_AsyncUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Async_AsyncUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E99B2EDC25A23D19002D789A /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		E99B2EDD25A23D19002D789A /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		E99B2EF425A24CE4002D789A /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		E9A2AF98259B4B7800F18432 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E9A2AF9D259B4BA200F18432 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E9A2AFA2259B52A200F18432 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E99B2EDB25A23CFB002D789A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E99B2EDD25A23D19002D789A /* amplifyconfiguration.json */,
+				E99B2EDC25A23D19002D789A /* awsconfiguration.json */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		E9A2AFAD259B5DBF00F18432 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +162,7 @@
 				E9A9768C259CA2810098DFA1 /* Helpers.swift */,
 				E9A976A2259CC3780098DFA1 /* Models.swift */,
 				E9AAE89E259DD720009877C2 /* ApiClient.swift */,
+				E99B2EF425A24CE4002D789A /* Managers.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -186,6 +202,7 @@
 		E9AF57392594B07C0028DF8A /* Async */ = {
 			isa = PBXGroup;
 			children = (
+				E99B2EDB25A23CFB002D789A /* Config */,
 				E9A2AFAD259B5DBF00F18432 /* Others */,
 				E9AF57792594C6340028DF8A /* Screens */,
 				E9AF573A2594B07C0028DF8A /* AppDelegate.swift */,
@@ -338,7 +355,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99B2EDE25A23D19002D789A /* awsconfiguration.json in Resources */,
 				E9A9767B259C89A50098DFA1 /* asyncResponse.json in Resources */,
+				E99B2EDF25A23D19002D789A /* amplifyconfiguration.json in Resources */,
 				E9AF57472594B0830028DF8A /* LaunchScreen.storyboard in Resources */,
 				E9AF57442594B0830028DF8A /* Assets.xcassets in Resources */,
 			);
@@ -509,6 +528,7 @@
 				E9AF577B2594C6500028DF8A /* SignInView.swift in Sources */,
 				E9AF573B2594B07C0028DF8A /* AppDelegate.swift in Sources */,
 				E9A97683259C92190098DFA1 /* StartChatViewController.swift in Sources */,
+				E99B2EF525A24CE4002D789A /* Managers.swift in Sources */,
 				E9A9768D259CA2810098DFA1 /* Helpers.swift in Sources */,
 				E9A2AFA8259B52BA00F18432 /* ChatView.swift in Sources */,
 				E9A9769B259CC27E0098DFA1 /* TextInputView.swift in Sources */,

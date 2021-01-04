@@ -7,24 +7,6 @@
 
 import Foundation
 
-class SessionManager {
-    
-    static let shared = SessionManager()
-    
-    var isLoggedIn :Bool?
-    
-    init() {
-        isLoggedIn = false
-    }
-    
-    func hasSession() -> Bool {
-        return isLoggedIn ?? false
-    }
-
-}
-
-//=================================================================================================
-
 class MockHelper {
     
     func createMockResponse<T: Decodable>(fileName :String, responseType :T.Type) -> T? {

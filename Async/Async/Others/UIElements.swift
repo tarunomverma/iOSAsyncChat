@@ -26,6 +26,20 @@ class Label :UILabel {
 
 //=================================================================================================
 
+class SixteenLabel :Label {
+    
+    override func setup() {
+        font = UIFont.boldSystemFont(ofSize: 16)
+    }
+    
+    func setText(_ text :String = "NA") {
+        attributedText = NSAttributedString(string: text)
+    }
+    
+}
+
+//=================================================================================================
+
 class LightLabel :Label {
     
     override func setup() {

@@ -8,6 +8,8 @@ target 'Async' do
   pod 'Reveal-SDK'
   pod 'AWSMobileClient'
   pod 'AWSPinpoint'
+  pod 'Amplify'
+  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
 
   # Pods for Async
 
