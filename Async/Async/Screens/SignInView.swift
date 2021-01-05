@@ -34,6 +34,7 @@ class SignInView :UIView {
     }
     
     func setup() {
+        passwordTextField.isSecureTextEntry = true
         addSubview(stackView)
         addSubview(signOutButton)
         signOutButton.isHidden = true
@@ -65,6 +66,8 @@ class SignInView :UIView {
         if let username = nameTextField.text,
            let password = passwordTextField.text {
             delegate?.signInTapped(username: username, password: password)
+            nameTextField.setText("")
+            passwordTextField.setText("")
         }
     }
     
@@ -73,7 +76,9 @@ class SignInView :UIView {
     }
     
     func configure(_ hasSession :Bool) {
-        stackView.isHidden = hasSession ? true : false
-        signOutButton.isHidden = hasSession ? false : true
+        DispatchQueue.main.async {
+            self.stackView.isHidden = hasSession ? true : false
+            self.signOutButton.isHidden = hasSession ? false : true
+        }
     }
 }

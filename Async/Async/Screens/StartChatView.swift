@@ -10,11 +10,11 @@ import UIKit
 class ChatListCell :UITableViewCell {
     
     let nameLabel = SixteenLabel("Dr. LGC")
+    let timeLabel = TwelveLightLabel("")
     let divider = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        isUserInteractionEnabled = false
         setup()
         setupConstraints()
     }
@@ -28,13 +28,18 @@ class ChatListCell :UITableViewCell {
         divider.height(1)
         
         addSubview(nameLabel)
+        addSubview(timeLabel)
         addSubview(divider)
     }
     
     func setupConstraints() {
         nameLabel.topToSuperview(offset: 12)
         nameLabel.leftToSuperview(offset: 12)
-        nameLabel.rightToSuperview(offset: -12)
+        
+        timeLabel.topToSuperview(offset: 12)
+        timeLabel.leftToRight(of: nameLabel, offset: 12)
+        timeLabel.rightToSuperview(offset: -12)
+        timeLabel.bottom(to: nameLabel)
         
         divider.topToBottom(of: nameLabel, offset: 12)
         divider.leftToSuperview(offset: 12)
@@ -43,7 +48,19 @@ class ChatListCell :UITableViewCell {
     }
     
     func configure(_ item :ConversationsResponse) {
-        nameLabel.setText("Dr. LGC")
+        if let participants = item.participants {
+            for p in participants {
+                if p != SessionManager.shared.getUsername() {
+                    nameLabel.setText(p)
+                    break
+                }
+            }
+        }
+        timeLabel.setText(Date().getDateTime(timeStamp: item.last))
+    }
+    
+    func configure(_ name :String) {
+        nameLabel.setText(name)
     }
 }
 
@@ -51,6 +68,7 @@ class ChatListCell :UITableViewCell {
 
 protocol ChatListViewDelegate :class {
     func newChatButtonTapped()
+    func chatTapped(id :String)
 }
 
 class ChatListView :UIView {
@@ -98,30 +116,37 @@ class ChatListView :UIView {
     @objc func newChatButtonTapped() {
         delegate?.newChatButtonTapped()
     }
+    
+    func configure(response :[ConversationsResponse]) {
+        self.response = response
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension ChatListView :UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        response?.count ?? 4
+        response?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ChatListCell
-//              let response = response
-        else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ChatListCell,
+              let res = response?[indexPath.row] else {
             return UITableViewCell()
         }
-        
-        // how to check if value for this index exists.?
-        if let res = response?[indexPath.row] {
-            cell.configure(res)
-        }
+        cell.configure(res)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let chatId = response?[indexPath.row].id else { return }
+        delegate?.chatTapped(id: chatId)
     }
 }
 
@@ -153,8 +178,13 @@ class StartChatView :UIView {
         chatListView.edgesToSuperview()
     }
     
-    func configure(_ hasSession :Bool) {
-        label.isHidden = hasSession ? true : false
-        chatListView.isHidden = hasSession ? false : true
+    func configure(_ hasSession :Bool, response :[ConversationsResponse]?) {
+        DispatchQueue.main.async {
+            self.label.isHidden = hasSession ? true : false
+            self.chatListView.isHidden = hasSession ? false : true
+            if let response = response, !response.isEmpty {
+                self.chatListView.configure(response: response)
+            }
+        }
     }
 }

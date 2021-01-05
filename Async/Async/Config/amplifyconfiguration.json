@@ -30,5 +30,18 @@
                 }
             }
         }
+    },
+    "analytics": {
+        "plugins": {
+            "awsPinpointAnalyticsPlugin": {
+                "pinpointAnalytics": {
+                    "appId": "58315ee0c52f475f983c9d204492c64a",
+                    "region": "us-east-1"
+                },
+                "pinpointTargeting": {
+                    "region": "us-east-1"
+                }
+            }
+        }
     }
 }

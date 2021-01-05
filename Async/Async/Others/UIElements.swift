@@ -64,6 +64,20 @@ class MediumLightLabel :Label {
 
 //=================================================================================================
 
+class TwelveLightLabel :Label {
+    
+    override func setup() {
+        font = UIFont.systemFont(ofSize: 12)
+    }
+    
+    func setText(_ text :String = "NA") {
+        attributedText = NSAttributedString(string: text)
+    }
+    
+}
+
+//=================================================================================================
+
 class SmallLightLabel :Label {
     
     override func setup() {
@@ -106,6 +120,10 @@ class TextField :UITextField {
 
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: insets)
+    }
+    
+    func setText(_ text :String) {
+        self.text = text
     }
     
 }

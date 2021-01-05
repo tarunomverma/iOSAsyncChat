@@ -19,6 +19,8 @@
 		E9A2AFA8259B52BA00F18432 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFA7259B52BA00F18432 /* ChatView.swift */; };
 		E9A2AFAF259B5DF800F18432 /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFAE259B5DF800F18432 /* UIElements.swift */; };
 		E9A2AFB4259B62A200F18432 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2AFB3259B62A200F18432 /* Extensions.swift */; };
+		E9A5DB1125A388AB00BF8172 /* StaffListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5DB1025A388AB00BF8172 /* StaffListViewController.swift */; };
+		E9A5DB1925A3D65700BF8172 /* StaffListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A5DB1825A3D65700BF8172 /* StaffListView.swift */; };
 		E9A9767B259C89A50098DFA1 /* asyncResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E9A9767A259C89A50098DFA1 /* asyncResponse.json */; };
 		E9A97683259C92190098DFA1 /* StartChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A97682259C92190098DFA1 /* StartChatViewController.swift */; };
 		E9A97688259C92370098DFA1 /* StartChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A97687259C92370098DFA1 /* StartChatView.swift */; };
@@ -70,6 +72,8 @@
 		E9A2AFA7259B52BA00F18432 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		E9A2AFAE259B5DF800F18432 /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
 		E9A2AFB3259B62A200F18432 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E9A5DB1025A388AB00BF8172 /* StaffListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffListViewController.swift; sourceTree = "<group>"; };
+		E9A5DB1825A3D65700BF8172 /* StaffListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffListView.swift; sourceTree = "<group>"; };
 		E9A9767A259C89A50098DFA1 /* asyncResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = asyncResponse.json; sourceTree = "<group>"; };
 		E9A97682259C92190098DFA1 /* StartChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatViewController.swift; sourceTree = "<group>"; };
 		E9A97687259C92370098DFA1 /* StartChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatView.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		E9AF575C2594B0840028DF8A /* AsyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncUITests.swift; sourceTree = "<group>"; };
 		E9AF575E2594B0840028DF8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9AF577A2594C6500028DF8A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		E9EA8F9625A4837D006BD04C /* Async.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Async.entitlements; sourceTree = "<group>"; };
 		F1520FD078EC10C9F1B14989 /* Pods-AsyncTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncTests.debug.xcconfig"; path = "Target Support Files/Pods-AsyncTests/Pods-AsyncTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +172,15 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		E9A5DB0F25A3888500BF8172 /* Staff */ = {
+			isa = PBXGroup;
+			children = (
+				E9A5DB1025A388AB00BF8172 /* StaffListViewController.swift */,
+				E9A5DB1825A3D65700BF8172 /* StaffListView.swift */,
+			);
+			path = Staff;
+			sourceTree = "<group>";
+		};
 		E9A97699259CC26B0098DFA1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +216,7 @@
 		E9AF57392594B07C0028DF8A /* Async */ = {
 			isa = PBXGroup;
 			children = (
+				E9EA8F9625A4837D006BD04C /* Async.entitlements */,
 				E99B2EDB25A23CFB002D789A /* Config */,
 				E9A2AFAD259B5DBF00F18432 /* Others */,
 				E9AF57792594C6340028DF8A /* Screens */,
@@ -234,6 +249,7 @@
 		E9AF57792594C6340028DF8A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E9A5DB0F25A3888500BF8172 /* Staff */,
 				E9A97699259CC26B0098DFA1 /* Chat */,
 				E9AF573E2594B07C0028DF8A /* SignInViewController.swift */,
 				E9AF577A2594C6500028DF8A /* SignInView.swift */,
@@ -528,7 +544,9 @@
 				E9AF577B2594C6500028DF8A /* SignInView.swift in Sources */,
 				E9AF573B2594B07C0028DF8A /* AppDelegate.swift in Sources */,
 				E9A97683259C92190098DFA1 /* StartChatViewController.swift in Sources */,
+				E9A5DB1925A3D65700BF8172 /* StaffListView.swift in Sources */,
 				E99B2EF525A24CE4002D789A /* Managers.swift in Sources */,
+				E9A5DB1125A388AB00BF8172 /* StaffListViewController.swift in Sources */,
 				E9A9768D259CA2810098DFA1 /* Helpers.swift in Sources */,
 				E9A2AFA8259B52BA00F18432 /* ChatView.swift in Sources */,
 				E9A9769B259CC27E0098DFA1 /* TextInputView.swift in Sources */,
@@ -705,15 +723,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Async/Async.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDQ6CJX3J6;
+				DEVELOPMENT_TEAM = NW8585VKKH;
 				INFOPLIST_FILE = Async/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Async;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LGC.Staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -726,15 +745,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Async/Async.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDQ6CJX3J6;
+				DEVELOPMENT_TEAM = NW8585VKKH;
 				INFOPLIST_FILE = Async/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Async;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LGC.Staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

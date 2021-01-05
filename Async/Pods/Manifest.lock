@@ -9,6 +9,10 @@ PODS:
     - AWSCore (~> 2.21.0)
     - AWSMobileClient (~> 2.21.0)
     - AWSPluginsCore (= 1.5.2)
+  - AmplifyPlugins/AWSPinpointAnalyticsPlugin (1.5.2):
+    - AWSCore (~> 2.21.0)
+    - AWSPinpoint (~> 2.21.0)
+    - AWSPluginsCore (= 1.5.2)
   - AWSAuthCore (2.21.1):
     - AWSCore (= 2.21.1)
   - AWSCognitoIdentityProvider (2.21.1):
@@ -32,7 +36,7 @@ PODS:
 DEPENDENCIES:
   - Amplify
   - AmplifyPlugins/AWSCognitoAuthPlugin
-  - AWSMobileClient
+  - AmplifyPlugins/AWSPinpointAnalyticsPlugin
   - AWSPinpoint
   - Reveal-SDK
   - TinyConstraints
@@ -64,6 +68,6 @@ SPEC CHECKSUMS:
   Reveal-SDK: 306e2880395ee396f5a8b4c485c3a86dd19866c7
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: f28dc63ff61b604747df612fced5891f5fa37885
+PODFILE CHECKSUM: b5305766cc95d0f5ba177710fe8615f48a7bccba
 
 COCOAPODS: 1.9.1

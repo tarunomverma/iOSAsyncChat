@@ -41,8 +41,8 @@ class TableViewCell :UITableViewCell {
         
         container.topToSuperview()
     
-        timeLabel.topToBottom(of: container, offset: 5)
-        timeLabel.bottomToSuperview()
+        timeLabel.topToBottom(of: container, offset: 3)
+        timeLabel.bottomToSuperview(offset: -5)
         timeLabel.leftToSuperview(offset: 0)
         timeLabel.rightToSuperview(offset: 0)
     }
@@ -66,22 +66,29 @@ class TableViewCell :UITableViewCell {
     
     func configure(message :Message) {
         msgLabel.setText(message.message ?? "")
-        timeLabel.setText(message.time ?? "")
+        timeLabel.setText(Date().getTime(timeStamp: message.time))
         setupForType(message.messageType())
     }
-    
 }
 
 //=================================================================================================
+
+protocol ChatViewDelegate :class {
+    func sendTapped(message :String)
+}
 
 class ChatView :UIView {
     
     let tableView = UITableView()
     let textView = TextInputView()
-    var response :AsyncResponse?
+    
+    weak var delegate :ChatViewDelegate?
+    var response :ConversationsResponse?
+    var bottomConstraint :NSLayoutConstraint?
     
     init() {
         super.init(frame: .zero)
+        textView.delegate = self
         setup()
         setupTableView()
     }
@@ -99,10 +106,10 @@ class ChatView :UIView {
         tableView.rightToSuperview(offset: -12)
         
         textView.height(100)
-        textView.topToBottom(of: tableView, offset: 12)
-        textView.bottomToSuperview()
+        textView.topToBottom(of: tableView, offset: 0)
         textView.leftToSuperview()
         textView.rightToSuperview()
+        bottomConstraint = textView.bottomToSuperview(offset: 0)
     }
     
     func setupTableView() {
@@ -114,11 +121,23 @@ class ChatView :UIView {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
     }
     
-    func configure(response :AsyncResponse?) {
-        self.response = response
-        tableView.reloadData()
+    func keyboardWillShow(show :Bool, keyboardHeight :CGFloat) {
+        UIView.animate(withDuration: 0.5, animations: {
+            if show {
+                self.bottomConstraint?.constant = -keyboardHeight
+            } else {
+                self.bottomConstraint?.constant = 0
+            }
+            self.layoutIfNeeded()
+        })
     }
     
+    func configure(response :ConversationsResponse?) {
+        DispatchQueue.main.async {
+            self.response = response
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension ChatView :UITableViewDelegate, UITableViewDataSource {
@@ -129,17 +148,25 @@ extension ChatView :UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell,
-              let res = response else {
+              let message = response?.messages?[indexPath.row] else {
             return UITableViewCell()
         }
-        if let msg = res.messages?[indexPath.row] {
-            cell.configure(message: msg)
-        }
+        cell.configure(message: message)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+}
+
+extension ChatView :TextInputViewDelegate {
     
+    func sendTapped(message: Message) {
+        if let msg = message.message {
+            delegate?.sendTapped(message: msg)
+            self.response?.messages?.append(message)
+            tableView.reloadData()
+        }
+    }
 }

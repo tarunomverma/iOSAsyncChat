@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Amplify
+import AmplifyPlugins
+import AWSPinpoint
+import AWSPluginsCore
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var awsPinpoint :AWSPinpoint?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         AmplifyManager().configure()
@@ -32,9 +37,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
-
+        
+        getEscapeHatch()
+        registerForPushNotifications()
         return true
     }
 
+    func registerForPushNotifications() {
+         UNUserNotificationCenter.current().delegate = self
+         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+             (granted, error) in
+             print("Permission granted: \(granted)")
+            
+             guard granted else { return }
+             DispatchQueue.main.async {
+                 UIApplication.shared.registerForRemoteNotifications()
+             }
+         }
+     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+         awsPinpoint?.notificationManager.interceptDidRegisterForRemoteNotifications(
+             withDeviceToken: deviceToken)
+        
+        let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
+        var tokenString = ""
+        for i in 0..<deviceToken.count {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        print("Received token data! \(tokenString)")
+        
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Couldn't register: \(error)")
+      }
+    
+    func getEscapeHatch() {
+        do {
+            let plugin = try Amplify.Analytics.getPlugin(for: "awsPinpointAnalyticsPlugin") as! AWSPinpointAnalyticsPlugin
+            awsPinpoint = plugin.getEscapeHatch()
+        } catch {
+            print("Get escape hatch failed with error - \(error)")
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
 }
 

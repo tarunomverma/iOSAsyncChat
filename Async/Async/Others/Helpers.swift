@@ -42,4 +42,11 @@ class JsonHelper {
         }
         return nil
     }
+    
+    static func convertToData<T: Encodable>(_ data: T) -> Data? {
+        guard let data: Data = try? JSONEncoder().encode(data) else {
+            return nil
+        }
+        return data
+    }
 }

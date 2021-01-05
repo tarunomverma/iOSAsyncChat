@@ -37,6 +37,28 @@ extension UIColor {
     }
 }
 
+extension Date {
+    
+    func getDateTime(timeStamp :Int?) -> String {
+        guard let timeStamp = timeStamp else { return ""}
+        let date = Date(timeIntervalSince1970: TimeInterval(timeStamp/1000))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM, h:mm a"
+        dateFormatter.timeZone = .current
+        return dateFormatter.string(from: date)
+    }
+    
+    func getTime(timeStamp :Int?) -> String {
+        guard let timeStamp = timeStamp else { return ""}
+        let date = Date(timeIntervalSince1970: TimeInterval(timeStamp/1000))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "am"
+        dateFormatter.pmSymbol = "pm"
+        dateFormatter.timeZone = .current
+        return dateFormatter.string(from: date)
+    }
+}
 //=================================================================================================
 
 extension UIViewController {
@@ -49,6 +71,16 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func addCancelButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                                 target: self,
+                                                                 action: #selector(dismissModal))
+    }
+    
+    @objc func dismissModal() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
