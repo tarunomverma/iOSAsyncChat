@@ -24,6 +24,8 @@ class RegisterView :UIView {
     let codeTextField = TextField("Code")
     let registerButton = Button("Register")
     let stackView = UIStackView()
+    
+    let usernameLabel = Label()
     let signOutButton = Button("Sign out")
     
     weak var delegate :RegisterViewDelegate?
@@ -39,16 +41,23 @@ class RegisterView :UIView {
     }
     
     func setup() {
+        passwordTextField.isSecureTextEntry = true
         divider.backgroundColor = UIColor.darkGray
         divider.height(1)
         
         addSubview(stackView)
         addSubview(signOutButton)
         signOutButton.isHidden = true
+        addSubview(usernameLabel)
+        usernameLabel.isHidden = true
         
         stackView.topToSuperview(offset: 100)
         stackView.leftToSuperview(offset: 24)
         stackView.rightToSuperview(offset: -24)
+        
+        usernameLabel.topToSuperview(offset: 100)
+        usernameLabel.leftToSuperview(offset: 24)
+        usernameLabel.rightToSuperview(offset: -24)
         
         signOutButton.centerYToSuperview()
         signOutButton.leftToSuperview(offset: 24)
@@ -88,6 +97,10 @@ class RegisterView :UIView {
         if let username = nameTextField.text,
            let code = codeTextField.text {
             delegate?.registerTapped(username: username, code: code)
+            nameTextField.setText("")
+            emailTextField.setText("")
+            codeTextField.setText("")
+            passwordTextField.setText("")
         }
     }
     
@@ -98,5 +111,7 @@ class RegisterView :UIView {
     func configure(_ hasSession :Bool) {
         stackView.isHidden = hasSession ? true : false
         signOutButton.isHidden = hasSession ? false : true
+        usernameLabel.isHidden = hasSession ? false : true
+        usernameLabel.text = "Hello " + SessionManager.shared.getUsername()
     }
 }

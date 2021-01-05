@@ -19,6 +19,8 @@ class SignInView :UIView {
     let passwordTextField = TextField("Password")
     let signInButton = Button("SignIn")
     let stackView = UIStackView()
+    
+    let usernameLabel = Label()
     let signOutButton = Button("Sign out")
     
     weak var delegate :SignInViewDelegate?
@@ -38,10 +40,16 @@ class SignInView :UIView {
         addSubview(stackView)
         addSubview(signOutButton)
         signOutButton.isHidden = true
+        addSubview(usernameLabel)
+        usernameLabel.isHidden = true
         
         stackView.topToSuperview(offset: 100)
         stackView.leftToSuperview(offset: 24)
         stackView.rightToSuperview(offset: -24)
+        
+        usernameLabel.topToSuperview(offset: 100)
+        usernameLabel.leftToSuperview(offset: 24)
+        usernameLabel.rightToSuperview(offset: -24)
         
         signOutButton.centerYToSuperview()
         signOutButton.leftToSuperview(offset: 24)
@@ -79,6 +87,8 @@ class SignInView :UIView {
         DispatchQueue.main.async {
             self.stackView.isHidden = hasSession ? true : false
             self.signOutButton.isHidden = hasSession ? false : true
+            self.usernameLabel.isHidden = hasSession ? false : true
+            self.usernameLabel.text = "Hello " + SessionManager.shared.getUsername()
         }
     }
 }

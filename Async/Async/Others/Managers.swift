@@ -33,8 +33,8 @@ class SessionManager {
         self.authToken = authToken
     }
     
-    func getAuthToken() -> String {
-        return authToken ?? ""
+    func getAuthToken() -> String? {
+        return authToken
     }
     
     func setUsername(_ username :String) {
@@ -72,7 +72,7 @@ class AmplifyManager {
         fetchCurrentAuthSession()
     }
     
-    func fetchCurrentAuthSession() {
+    func fetchCurrentAuthSession(completion :ActionBlock? = nil) {
 //        _ = Amplify.Auth.fetchAuthSession { result in
             Amplify.Auth.fetchAuthSession { result in
                 do {
@@ -81,6 +81,10 @@ class AmplifyManager {
                         let tokens = try cognitoTokenProvider.getCognitoTokens().get()
                         print("Id token - \(tokens.idToken) ")
                         SessionManager.shared.setAuthToken(tokens.idToken)
+                        
+                        if let action = completion {
+                            action()
+                        }
                         
                         print("Is user signed in - \(session.isSignedIn)")
                         SessionManager.shared.setSignedIn(session.isSignedIn)

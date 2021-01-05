@@ -30,31 +30,61 @@ class API {
     private func request<T :Codable>(urlString :String, method :Method, requestBody :Data? = nil, completion: @escaping((Result<T, APIError>) -> Void)) {
         guard let url = URL(string: urlString) else { return }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "\(method)"
-        request.allHTTPHeaderFields = ["Content-Type": "application/json",
-                                       "authorization": SessionManager.shared.getAuthToken()]
-        request.httpBody = requestBody
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                completion(.failure(.serverError))
-                return
-            }
+        if SessionManager.shared.getAuthToken() == nil {
+            AmplifyManager().fetchCurrentAuthSession() {
+                var request = URLRequest(url: url)
+                request.httpMethod = "\(method)"
+                request.allHTTPHeaderFields = ["Content-Type": "application/json",
+                                               "authorization": SessionManager.shared.getAuthToken() ?? ""]
+                request.httpBody = requestBody
+                
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    guard error == nil else {
+                        completion(.failure(.serverError))
+                        return
+                    }
 
-            guard let data = data else {
-                completion(.failure(.serverError))
-                return
+                    guard let data = data else {
+                        completion(.failure(.serverError))
+                        return
+                    }
+                    
+                    guard let response :T = JsonHelper.decode(T.self, from: data) else {
+                        completion(.failure(.parsingError))
+                        return
+                    }
+                    
+                    completion(.success(response))
+                }
+                task.resume()
             }
+        } else if let auth = SessionManager.shared.getAuthToken() {
+            var request = URLRequest(url: url)
+            request.httpMethod = "\(method)"
+            request.allHTTPHeaderFields = ["Content-Type": "application/json",
+                                           "authorization":auth]
+            request.httpBody = requestBody
             
-            guard let response :T = JsonHelper.decode(T.self, from: data) else {
-                completion(.failure(.parsingError))
-                return
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard error == nil else {
+                    completion(.failure(.serverError))
+                    return
+                }
+
+                guard let data = data else {
+                    completion(.failure(.serverError))
+                    return
+                }
+                
+                guard let response :T = JsonHelper.decode(T.self, from: data) else {
+                    completion(.failure(.parsingError))
+                    return
+                }
+                
+                completion(.success(response))
             }
-            
-            completion(.success(response))
+            task.resume()
         }
-        task.resume()
     }
 }
 

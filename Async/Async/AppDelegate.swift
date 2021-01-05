@@ -22,14 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
+        let fontStyle = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
+        
         let signInVC = SignInViewController()
         signInVC.tabBarItem = UITabBarItem(title: "SignIn", image: UIImage(named: "signInIcon"), tag: 0)
+        signInVC.tabBarItem.setTitleTextAttributes(fontStyle, for: .normal)
         
         let registerVC = RegisterViewController()
         registerVC.tabBarItem = UITabBarItem(title: "Register", image: UIImage(named: "registerIcon"), tag: 1)
+        registerVC.tabBarItem.setTitleTextAttributes(fontStyle, for: .normal)
         
         let chatVC = StartChatViewController()
         chatVC.tabBarItem = UITabBarItem(title: "Chat", image: UIImage(named: "chatIcon"), tag: 2)
+        chatVC.tabBarItem.setTitleTextAttributes(fontStyle, for: .normal)
         let chatNav = UINavigationController(rootViewController: chatVC)
         
         let tabBarController = UITabBarController()
