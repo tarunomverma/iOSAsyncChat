@@ -56,7 +56,7 @@ class TextInputView :UIView {
     @objc func sendTapped() {
         if let message = textField.text {
             let time = Int(Date().timeIntervalSince1970 * 1000)
-            let a = Message(sender: SessionManager.shared.getUsername(), message: message, time: time)
+            let a = Message(sender: SessionManager.shared.getUsername(), message: message, time: time, fileUrl: nil)
             delegate?.sendTapped(message: a)
             self.textField.setText("")
         }

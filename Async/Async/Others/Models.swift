@@ -45,6 +45,7 @@ struct Message :Codable {
     let sender :String?
     let message :String?
     let time :Int?
+    let fileUrl :String?
     
     func messageType() -> MessageType {
         if sender == SessionManager.shared.getUsername() {
